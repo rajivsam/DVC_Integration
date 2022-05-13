@@ -1,0 +1,8 @@
+git add data/.gitignore data/ml-100k.dvc
+dvc remote add -d datastorage gdrive://1kxYuFnwIPEroYl8Z36wLT4mCh5AFpdZX
+git commit .dvc/config -m "Configuring remote storage."
+dvc push
+dvc run --force \
+-n download \
+-p ml100kurl.value \
+python3 src/download_data.py
